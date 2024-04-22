@@ -1,0 +1,77 @@
+Practical 7 a. create a function in PL/SQL to Compute and returns the maximum value
+
+
+DECLARE 
+   a number; 
+   b number; 
+   c number; 
+FUNCTION findMax(x IN number, y IN number)  
+RETURN number 
+IS 
+    z number; 
+BEGIN 
+   IF x > y THEN 
+      z:= x; 
+   ELSE 
+      Z:= y; 
+   END IF;  
+   RETURN z; 
+END; 
+BEGIN 
+   a:= 23; 
+   b:= 45;  
+   c := findMax(a, b); 
+   dbms_output.put_line(' Maximum of (23,45): ' || c); 
+END; 
+/
+
+Practical 7 b. create a function in PL/SQL to Compute a factorial of given number
+
+num int:=5;
+res int;
+
+function fact(num IN int) 
+return int
+AS
+f int;
+
+begin
+f:=1;
+for i in 1..num loop
+  f:=f*i;
+end loop;
+return f;
+end fact;
+
+begin
+
+dbms_output.put_line('FINDING FACTORIAL OF:'||num);
+res:=fact(num);
+dbms_output.put_line('FACTORIAL IS:'||res);
+
+end;
+
+
+CORRECTED CODE :- 
+
+
+DECLARE 
+  num int := 5;
+  res int;
+  
+  FUNCTION fact(p_num IN int) RETURN int AS
+    f int := 1;
+  BEGIN
+    FOR i IN 1..p_num LOOP
+      f := f * i;
+    END LOOP;
+    RETURN f;
+  END fact;
+  
+BEGIN
+  dbms_output.put_line('FINDING FACTORIAL OF:' || num);
+  res := fact(num);
+  dbms_output.put_line('FACTORIAL IS:' || res);
+END;
+/
+
