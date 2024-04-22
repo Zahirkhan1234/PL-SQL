@@ -1,0 +1,32 @@
+PRACTICAL NO 8 B : Creating a statement-level trigger in PL/SQL:
+
+
+STEP1 -Create Table
+
+
+CREATE TABLE products (
+    product_id NUMBER PRIMARY KEY,
+    product_name VARCHAR2(100),
+    quantity NUMBER
+);
+
+STEP 2 -- Create a trigger
+
+
+CREATE OR REPLACE TRIGGER log_product_changes
+AFTER INSERT OR UPDATE OR DELETE ON products
+BEGIN
+    IF INSERTING THEN
+        DBMS_OUTPUT.PUT_LINE('New product added or quantity updated');
+    ELSIF UPDATING THEN
+        DBMS_OUTPUT.PUT_LINE('Product quantity updated');
+    ELSIF DELETING THEN
+        DBMS_OUTPUT.PUT_LINE('Product deleted');
+    END IF;
+END;
+/
+
+
+STEP 3 – Insert a new record
+
+insert into products (product_id,product_name,quantity) values(1001,'Washing Machine',5);
