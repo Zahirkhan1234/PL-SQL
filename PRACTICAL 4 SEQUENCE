@@ -1,0 +1,28 @@
+Code: to create sequence named supplier_seq
+
+CREATE SEQUENCE supplier_seq
+  MINVALUE 1
+  START WITH 1
+  INCREMENT BY 1
+  CACHE 20;
+
+
+Code: Creating table suppliers
+
+CREATE TABLE suppliers( 
+   Supplier_id INT, 
+   Supplier_name varchar (20) 
+);  
+
+
+Code: to insert values using sequence into suppliers table
+
+INSERT INTO suppliers
+(supplier_id, supplier_name)
+VALUES
+(supplier_seq.NEXTVAL, 'Kraft Foods');
+
+
+Code: to see records
+
+Select * from suppliers;
