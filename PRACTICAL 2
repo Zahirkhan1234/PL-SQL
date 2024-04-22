@@ -1,0 +1,76 @@
+a. Using while loop
+
+DECLARE
+i INTEGER := 1;
+BEGIN
+WHILE i <= 10 LOOP
+DBMS_OUTPUT.PUT_LINE(i);
+i := i+1;
+END LOOP;
+END;
+
+
+b. Using for loop
+
+BEGIN
+FOR k IN 1..10 LOOP
+-- note that k was not declared
+DBMS_OUTPUT.PUT_LINE(k);
+END LOOP;
+END;
+
+c. Using Exit loop
+
+DECLARE
+i NUMBER := 1;
+BEGIN
+LOOP
+EXIT WHEN i>10;
+DBMS_OUTPUT.PUT_LINE(i);
+i := i+1;
+END LOOP;
+END;
+
+
+d. Using Continue statement
+
+DECLARE
+x NUMBER := 0;
+BEGIN
+LOOP -- After CONTINUE statement, control resumes here
+DBMS_OUTPUT.PUT_LINE ('Inside loop:  x = ' || TO_CHAR(x));
+x := x + 1;
+IF x < 3 THEN
+CONTINUE;
+END IF;
+DBMS_OUTPUT.PUT_LINE
+('Inside loop, after CONTINUE:  x = ' || TO_CHAR(x));
+EXIT WHEN x = 5;
+END LOOP;
+
+
+DBMS_OUTPUT.PUT_LINE (' After loop:  x = ' || TO_CHAR(x));
+END;
+/
+
+e. Using GOTO statement
+
+DECLARE
+a number(2) := 30;
+BEGIN
+<<loopstart>>
+-- while loop execution
+WHILE a < 50 LOOP
+dbms_output.put_line ('value of a: ' || a);
+a := a + 1;
+IF a = 35 THEN
+a := a + 1;
+GOTO loopstart;
+END IF;
+END LOOP;
+END;
+/
+
+
+
+
